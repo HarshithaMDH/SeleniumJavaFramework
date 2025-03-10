@@ -1,8 +1,17 @@
 # Automation Framework Using Java Selenium
 
 ## Overview
-This project is an automation testing framework built from scratch using Java, Selenium WebDriver, and TestNG. The framework is designed to be robust, maintainable, and scalable, and it automates test scenarios for the [Demoblaze](https://www.demoblaze.com/) web application. Key features include:
+This project is an automation testing framework built from scratch using Java, Selenium WebDriver, and TestNG. The framework is designed to be robust, maintainable, and scalable, and it automates test scenarios for the [Demoblaze](https://www.demoblaze.com/) web application.
 
+Tech Stack
+Programming Language: Java
+Automation Tool: Selenium WebDriver
+Test Framework: TestNG
+Build Tool: Maven
+Reporting: TestNG reports
+Data Handling: Excel (Apache POI) & Random Data Utility
+
+Key features include:
 - **Page Object Model (POM):** Separates page-specific actions from test logic.
 - **Data-Driven Testing:** Uses random data generation (via `RandomDataUtils`) to eliminate hardcoded values.
 - **Detailed Reporting:** Generates TestNG HTML reports (located in the `test-output` folder) and captures screenshots on failures.
@@ -14,10 +23,10 @@ This project is an automation testing framework built from scratch using Java, S
 SeleniumTestFramework
 1.src/main/java/─ com.automation.base─ BaseTest.java/com.automation.pages/── LoginPage.java/ProductPage.java/PurchasePage.java /ContactPage.java/com.automation.utils/── ExcelUtils.java/── RandomDataUtils.java
 2.src/test/java/-com.automation.tests/-LoginTest.java/-AddToCartTest.java/─ PurchaseTest.java/─ ContactTest.java
-3.resources/config.properties/─ test-output/ # Generated TestNG HTML reports ├── screenshots/ # Screenshots captured on test failures ├── pom.xml # Maven configuration file*-README.md
+3.resources/config.properties/─ test-output/ # Generated TestNG HTML reports/-screenshots/ # Screenshots captured on test failures ├pom.xml # Maven configuration file*-README.md
 
 ## Prerequisites
-- **Java or later**
+- **Java 21 or later**
 - **Maven 3.6+**
 - **Chrome Browser** (compatible with your ChromeDriver version)
 - **Selenium WebDriver 4.11.0**
@@ -26,28 +35,26 @@ SeleniumTestFramework
 
 ## Setup Instructions
 1. **Clone the Repository:**
-   sh
    git clone <your-public-repository-url>
    
-Navigate to the Project Directory:
-
+2.Navigate to the Project Directory:
 cd SeleniumTestFramework
 
-Configure the Framework:
-
+3.Configure the Framework:
 Open src/test/resources/config.properties and update the URL, browser type, and other settings as required.
 
-Build the Project:
+4.Build the Project:
 mvn clean install
 
-Run the Tests:
+5.Run the Tests:
 Using Eclipse:
 Right-click on testng.xml and select Run As > TestNG Suite.
 Using Maven:mvn test
 
-View Test Reports:
+6.View Test Reports:
 Open test-output/index.html in your browser to see the TestNG report.
-Test Scenarios and Their Steps
+
+**Test Scenarios and Their Steps**
 1. Login Test(LoginTest.java)(Login to application by entering username and password and click on login button)
 Objective: Validate that the user can successfully log in.
 Steps:
@@ -99,7 +106,7 @@ clcik on placeorder
 handle place order popup
 validate the popup using alert
 
-Reporting & Logging
+**Reporting & Logging**
 TestNG HTML Reports:
 TestNG automatically generates HTML reports in the test-output folder.
 Screenshots on Failure:
@@ -107,11 +114,34 @@ Screenshots are automatically captured on test failures and stored in the screen
 Logging:
 Console logs provide detailed information on test execution steps.
 
+**EXPLANATION FOR FRAMEWORK**
+ I have followed an hybrid framework,Where the project have build with maven as the dependency tool ,where the dependent builds are being updated automatically from remote respository if there is any change is the versions of the builds.In addition to that maven gives the default folder structure like src/mian/java ,src/test/java which helps us to maintain the testcripts in a well organized way. 
+ 
+Generic Utility(Utils package) is the one of the component available in the framework which contain several classes which are reuseable and can be used by any projects. 
+Excell Utility which is implemented using Apache Poi library to read data from excel or csv files,by which we can run the testscripts with multiple set of data.  
+Java Utility ,most of the TCs required methods like system date and random data.
+
+Listener Implementation which is the implementation class of TestNG ITest Listner which is used to capture failure event in the runtime and capture the screenshot in the screenshot folder. 
+
+POM Utility It is a collection of resuable webelements and business library which can be used to specific business or project.Which makes maintainence and modification of webelements are easy. 
+ 
+BaseTest its contain common TestNG configurations annotations which is required for all the testscripts.As per the automation rule every testscripts should extend base class to use those annotations. 
+
+TestScripts are being created using the testNg annotations and make use of the other components. 
+Once after the creation of the testcripts ,for executing the TSc in batch we use testng.xml file ie driver file where the execution starts. 
+ 
+Once its executed the reports are being generated in the report-html component.Report helps us to understand the stability of the application and to share to the stakeholders. 
+ 
+POM.xml where all the dependencies are automatically updated,which helps in the seamless execution of the testscripts. 
 
 README.md: This file provides setup instructions, a framework overview, and details about the test cases and reporting.
 
-Contact Information
+**Contact Information**
 For any queries or issues regarding the framework, please contact:
 Harshitha M D
 Email: harshithamdgowda98@gmail.com
+Repository URL: https://github.com/HarshithaMDH/SeleniumJavaFramework
+
+
+
 
