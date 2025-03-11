@@ -145,3 +145,12 @@ Repository URL: https://github.com/HarshithaMDH/SeleniumJavaFramework
 
 
 
+**Note:**
+**Handling Element Synchronization**
+Due to my laptop's performance constraints and compatibility factors, I have incorporated additional explicit waits to ensure stable and consistent test execution. 
+
+This approach helps in:
+Handling page load delays.
+Avoiding NoSuchElementException or StaleElementReferenceException.
+Ensuring elements are fully loaded before interactions.
+I have primarily used Explicit Waits (WebDriverWait) in critical interactions to dynamically wait for elements ratrather than relying on fixed Thread.sleep(), ensuring better test stability across different environments.
